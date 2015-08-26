@@ -221,6 +221,7 @@ class SmartTabStrip extends LinearLayout {
   void onViewPagerPageChanged(int position, float positionOffset) {
     selectedPosition = position;
     selectionOffset = positionOffset;
+    //TODO 这里是怎么回事？
     if (positionOffset == 0f && lastPosition != selectedPosition) {
       lastPosition = selectedPosition;
     }
@@ -242,7 +243,7 @@ class SmartTabStrip extends LinearLayout {
     final int tabCount = getChildCount();
     final SmartTabLayout.TabColorizer tabColorizer = getTabColorizer();
     final boolean isLayoutRtl = Utils.isLayoutRtl(this);
-
+    // indicatorInFront 这个标识代表导航的线在overline和underline的前面或后面
     if (indicatorInFront) {
       drawOverline(canvas, 0, width);
       drawUnderline(canvas, 0, width, height);
@@ -272,6 +273,7 @@ class SmartTabStrip extends LinearLayout {
           color = blendColors(nextColor, color, selectionOffset);
         }
 
+        //TODO 看不太懂这个算法
         // Draw the selection partway between the tabs
         float startOffset = indicationInterpolator.getLeftEdge(selectionOffset);
         float endOffset = indicationInterpolator.getRightEdge(selectionOffset);

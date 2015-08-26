@@ -155,6 +155,7 @@ public class SmartTabLayout extends HorizontalScrollView {
 
     this.tabStrip = new SmartTabStrip(context, attrs);
 
+    //TODO 为什么不能同时支持两个操作？
     if (distributeEvenly && tabStrip.isIndicatorAlwaysInCenter()) {
       throw new UnsupportedOperationException(
           "'distributeEvenly' and 'indicatorAlwaysInCenter' both use does not support");
@@ -181,6 +182,7 @@ public class SmartTabLayout extends HorizontalScrollView {
     if (tabStrip.isIndicatorAlwaysInCenter() && getChildCount() > 0) {
       View firstTab = tabStrip.getChildAt(0);
       View lastTab = tabStrip.getChildAt(getChildCount() - 1);
+      //TODO 这里的逻辑看不懂
       int start = (w - Utils.getMeasuredWidth(firstTab)) / 2 - Utils.getMarginStart(firstTab);
       int end = (w - Utils.getMeasuredWidth(lastTab)) / 2 - Utils.getMarginEnd(lastTab);
       tabStrip.setMinimumWidth(tabStrip.getMeasuredWidth());
@@ -411,6 +413,7 @@ public class SmartTabLayout extends HorizontalScrollView {
 
     final boolean isLayoutRtl = Utils.isLayoutRtl(this);
 
+    //TODO 一直在中间的未仔细阅读
     if (tabStrip.isIndicatorAlwaysInCenter()) {
       View firstTab = tabStrip.getChildAt(0);
       int x;
@@ -438,6 +441,7 @@ public class SmartTabLayout extends HorizontalScrollView {
         : start - startMargin + positionOffset;
 
     if (tabIndex > 0 || positionOffset > 0) {
+      //TODO 为什么要减去这个titleOffset
       // If we're not at the first child and are mid-scroll, make sure we obey the offset
       if (isLayoutRtl) {
         x += titleOffset;
